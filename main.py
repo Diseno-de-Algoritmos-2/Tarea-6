@@ -2,6 +2,7 @@ import time
 from algorithms.vertex_cover_1 import vertex_cover_1
 from algorithms.vertex_cover_2 import vertex_cover_2
 from algorithms.vertex_cover_3 import vertex_cover_3
+from algorithms.vertex_cover_4 import vertex_cover_4
 
 
 # Lee el archivo input.txt, que contiene el grafo y el algoritmo a usar
@@ -42,8 +43,8 @@ def solve_vertex_cover(vertexList, algorithm):
         return vertex_cover_2(vertexList)
     elif algorithm == 3:
         return vertex_cover_3(vertexList)
-    # elif algorithm == 4:
-    #     return vertex_cover_4(vertexList)
+    elif algorithm == 4:
+        return vertex_cover_4(vertexList)
     else:
         raise ValueError("Algoritmo invalido. Debe ser un numero entre 1 y 4.")
 
