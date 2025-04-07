@@ -55,13 +55,13 @@ def main():
     graph, algorithm = import_graph()
 
     # Comienza a contar el tiempo
-    start_time = time.time()
+    start_time = time.perf_counter()
 
     # Resuelve el problema de vertex cover
     vertex_cover = solve_vertex_cover(graph, algorithm)
 
     # Termina de contar el tiempo
-    end_time = time.time()
+    end_time = time.perf_counter()
 
     # Imprime el resultado
     print("Resultados del algoritmo ", str(algorithm) + ":\n")

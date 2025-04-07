@@ -9,4 +9,4 @@
 3	5
 4	6
 
-Algoritmo: 4
+Algoritmo: 1
