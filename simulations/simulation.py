@@ -55,9 +55,9 @@ def monte_carlo(N_Simulations):
     for i in range(N_Simulations):
 
         # 1. Creamos un grafo aleatorio que se guardará en el archivo input.txt
-        N_Graphs = [100, 1000, 10000]
+        N_Graphs = [100, 250, 500]
         num_nodes = random.choice(N_Graphs)
-        generate_graph(num_nodes, edge_probability=0.4)
+        generate_graph(num_nodes, edge_probability=0.33)
 
         # 2. Importa el grafo
         graph = import_graph("simulations/input.txt")
@@ -93,7 +93,7 @@ def monte_carlo(N_Simulations):
 
 def plot_results(results):
     
-    sizes = [100, 1000, 10000]
+    sizes = [100, 250, 500]
     
     print("\n        RESUMEN        \n")
     
@@ -165,7 +165,7 @@ def plot_results(results):
 
 
 def main():
-    N_Simulations = 10
+    N_Simulations = 25
     results = monte_carlo(N_Simulations)
     plot_results(results)
 
