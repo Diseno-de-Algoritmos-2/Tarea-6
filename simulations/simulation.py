@@ -82,7 +82,7 @@ def generate_random_graph(num_nodes, edge_probability):
     for node1 in range(num_nodes):
         for node2 in range(node1 + 1, num_nodes):
             if random.random() < edge_probability:
-                edges.add(frozenset({node1, node2}))
+                edges.add((node1, node2))
 
     return edges
 
@@ -160,8 +160,6 @@ def plot_results(results):
 
         plt.tight_layout()
         plt.savefig(f"simulations/algorithm_comparison_size_{size}.png")
-
-    plt.show()
 
 
 def main():

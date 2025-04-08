@@ -23,6 +23,7 @@ def vertex_cover_3(edges):
 
     # Mientras haya ejes no cubiertos
     while uncovered_edges:
+
         # Escoge un eje arbitrario
         edge = next(iter(uncovered_edges))
         node1, node2 = edge

@@ -19,7 +19,7 @@ def vertex_cover_1(edges):
         new_edges = set()
 
         for e in edges:
-            if not (e & edge):
+            if edge[0] not in e and edge[1] not in e:
                 new_edges.add(e)
 
         edges = new_edges

@@ -23,14 +23,13 @@ def import_graph():
                 break
 
             # Separa la línea
-            nodes = line.split("\t")
-
+            nodes = line.split()
             # Separa los nodos
             node1 = int(nodes[0])
             node2 = int(nodes[1])
 
-            # Guarda el eje como un frozenset (para que sea inmutable y único en el conjunto)
-            edges.add(frozenset({node1, node2}))
+            # Guarda el eje
+            edges.add((node1, node2))
 
         # Lee el algoritmo
         algorithm = int(f.readline().strip()[-1])

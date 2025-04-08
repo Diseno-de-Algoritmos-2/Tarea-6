@@ -21,7 +21,7 @@ def vertex_cover_2(edges):
     # Mientras haya ejes no cubiertos
     while uncovered_edges:
 
-        # Escoge el nodo de mayor grado usando un bucle explícito
+        # Escoge el nodo de mayor grado
         max_node = None
         max_degree = -1
         for node, neighbors in graph.items():
@@ -29,10 +29,6 @@ def vertex_cover_2(edges):
             if degree > max_degree:
                 max_degree = degree
                 max_node = node
-
-        # Verifica si se encontró un nodo válido
-        if max_node is None:
-            break
 
         # Agrega el nodo al conjunto de cobertura
         vertex_cover.add(max_node)
@@ -44,6 +40,6 @@ def vertex_cover_2(edges):
             graph[neighbor].remove(max_node)
 
         # Elimina el nodo del grafo
-        graph.pop(max_node)
+        del graph[max_node]
 
     return vertex_cover
