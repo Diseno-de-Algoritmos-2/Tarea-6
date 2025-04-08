@@ -70,13 +70,6 @@ def monte_carlo(N_Simulations):
 
 
 def generate_random_graph(num_nodes, edge_probability):
-    """
-    Genera un grafo aleatorio no dirigido.
-
-    :param num_nodes: Número de nodos en el grafo.
-    :param edge_probability: Probabilidad de que exista un arco entre dos nodos.
-    :return: Un conjunto de arcos (edges), donde cada arco es un frozenset de dos nodos.
-    """
     edges = set()
 
     for node1 in range(num_nodes):
