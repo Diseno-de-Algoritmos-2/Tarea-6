@@ -7,8 +7,12 @@ from algorithms.vertex_cover_4 import vertex_cover_4
 
 # Lee el archivo input.txt, que contiene el grafo y el algoritmo a usar
 def import_graph():
+    """
+    Lee el archivo input.txt, que contiene el grafo y el algoritmo a usar.
+    Devuelve un conjunto de ejes (edges) y el algoritmo seleccionado.
+    """
 
-    vertexList = []
+    edges = set()
     algorithm = 0
 
     with open("input.txt", "r") as f:
@@ -18,20 +22,20 @@ def import_graph():
             if not line:
                 break
 
-            # Separa la linea
+            # Separa la línea
             nodes = line.split("\t")
 
             # Separa los nodos
-            node1 = nodes[0]
-            node2 = nodes[1]
+            node1 = int(nodes[0])
+            node2 = int(nodes[1])
 
-            # guarda el nodo como un par de nodos
-            vertexList.append((node1, node2))
+            # Guarda el eje como un frozenset (para que sea inmutable y único en el conjunto)
+            edges.add(frozenset({node1, node2}))
 
         # Lee el algoritmo
-        algorithm = int(f.readline()[-1].strip())
+        algorithm = int(f.readline().strip()[-1])
 
-    return vertexList, algorithm
+    return edges, algorithm
 
 
 # Dependiedo del algoritmo, llama a la funcion correspondiente del archivo algorithms.py

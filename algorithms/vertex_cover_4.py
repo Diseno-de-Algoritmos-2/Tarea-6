@@ -1,49 +1,56 @@
 import random
 
 
-def vertex_cover_4(vertexList):
+def vertex_cover_4(edges):
     """
     Escoger aleatoriamente un eje, incluir aleatoriamente uno de los dos
     vértices conectados, descartar todos los demás ejes conectados por el
     vértice escogido y repetir hasta que no queden ejes.
 
-        Esto es basicamente el algoritmo 3 pero randomizado.
+    Esto es básicamente el algoritmo 3 pero randomizado.
     """
 
-    # Inicializa el conjunto de cobertura
-    uncovered_edges, vertex_cover = vertexList, []
+    # Inicializa el conjunto de cobertura y los ejes no cubiertos
+    vertex_cover = set()
+    uncovered_edges = set(edges)
 
-    # Organiza el grafo en un diccionario como una lista de adyacencia
+    # Construye el grafo como una lista de adyacencia
     graph = {}
-    for edge in vertexList:
-        node1, node2 = edge
-        if node1 not in graph: graph[node1] = []
-        if node2 not in graph: graph[node2] = []
-        graph[node1].append(node2)
-        graph[node2].append(node1)
+    for node1, node2 in edges:
+        if node1 not in graph:
+            graph[node1] = set()
+        if node2 not in graph:
+            graph[node2] = set()
+        graph[node1].add(node2)
+        graph[node2].add(node1)
 
     # Mientras haya ejes no cubiertos
     while uncovered_edges:
+        # Escoge un eje aleatorio
+        edge = random.choice(list(uncovered_edges))
+        node1, node2 = edge
 
-        # Escoge un eje aletorio
-        edge = random.choice(uncovered_edges)
+        # Escoge aleatoriamente uno de los dos extremos
+        if random.random() < 0.5:
+            chosen_node = node1
+        else:
+            chosen_node = node2
 
-        # escoge aleatoriamente uno de los dos extremos
-        max_node = random.choice(edge)
+        # Verifica si el nodo aún está en el grafo
+        if chosen_node not in graph:
+            uncovered_edges.discard(edge)
+            continue
 
         # Agrega el nodo al conjunto de cobertura
-        if max_node not in vertex_cover: vertex_cover.append(max_node)
+        vertex_cover.add(chosen_node)
 
         # Elimina los ejes que contengan el nodo
-        for neighbor in graph[max_node]:
-            edge = (max_node, neighbor)
-            edgev = (neighbor, max_node)
-            if edge in uncovered_edges: uncovered_edges.remove(edge)
-            if edgev in uncovered_edges: uncovered_edges.remove(edgev)
+        for neighbor in list(graph[chosen_node]):
+            uncovered_edges.discard((chosen_node, neighbor))
+            uncovered_edges.discard((neighbor, chosen_node))
+            graph[neighbor].remove(chosen_node)
 
         # Elimina el nodo del grafo
-        graph.pop(max_node)
-        for neighbor in graph:
-            if max_node in graph[neighbor]: graph[neighbor].remove(max_node)
+        graph.pop(chosen_node)
 
     return vertex_cover
