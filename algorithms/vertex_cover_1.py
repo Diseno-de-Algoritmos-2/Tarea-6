@@ -16,12 +16,6 @@ def vertex_cover_1(edges):
         vertex_cover.update(edge)
 
         # Elimina los ejes que contengan ALGUNO de los nodos de ese eje
-        new_edges = set()
-
-        for e in edges:
-            if edge[0] not in e and edge[1] not in e:
-                new_edges.add(e)
-
-        edges = new_edges
+        edges = {e for e in edges if not (e[0] in edge or e[1] in edge)}
 
     return vertex_cover
