@@ -1,0 +1,9 @@
+Grafo,Algoritmo,Tamaño solución,Tamaño óptimo,Razón algoritmo/óptimo,Tiempo ejecución (s),¿Falló (>2×)?
+Ciclo C5,2,3,3,1.00,0.000000,No
+Ciclo C5,3,3,3,1.00,0.000000,No
+K_{2,10},2,2,2,1.00,0.000000,No
+K_{2,10},3,2,2,1.00,0.000000,No
+K_{2,20},2,2,2,1.00,0.000000,No
+K_{2,20},3,2,2,1.00,0.000000,No
+FALLO TOTAL,2,20,10,2.00,0.000000,Sí
+FALLO TOTAL,3,20,10,2.00,0.000000,Sí
