@@ -43,7 +43,7 @@ def vertex_cover_3(edges):
         del graph[max_node]
     return vertex_cover
 
-# --------------------- Función para leer grafo desde archivo ---------------------
+# --------------------- Leer grafo desde archivo ---------------------
 def leer_grafo_desde_txt(ruta):
     edges = set()
     with open(ruta, 'r') as archivo:
@@ -53,7 +53,7 @@ def leer_grafo_desde_txt(ruta):
                 edges.add((a, b))
     return edges
 
-# --------------------- Función de prueba ---------------------
+# --------------------- Ejecutar y mostrar resultados ---------------------
 def probar_algoritmo(nombre, edges, algoritmo, optimo):
     inicio = time()
     if algoritmo == 2:
@@ -63,26 +63,28 @@ def probar_algoritmo(nombre, edges, algoritmo, optimo):
     else:
         print("Algoritmo no válido")
         return
-
     fin = time()
+    
     tamaño = len(resultado)
     razon = tamaño / optimo
+    tiempo = fin - inicio
 
     print(f"\n--- {nombre} (Algoritmo {algoritmo}) ---")
     print(f"  Solución encontrada: {resultado}")
     print(f"  Tamaño de la solución: {tamaño}")
     print(f"  Tamaño óptimo: {optimo}")
     print(f"  Razón: {razon:.2f}")
-    print(f"  Tiempo de ejecución: {fin - inicio:.6f} s")
-    if razon > 2.0:
+    print(f"  Tiempo de ejecución: {tiempo:.6f} s")
+
+    if razon >= 2.0:
         print("  [!] El algoritmo generó una solución peor que el doble del óptimo.")
     else:
         print("  [OK] La solución está dentro del rango esperado.")
 
-# --------------------- Cargar desde archivo y ejecutar ---------------------
+# --------------------- Ejecutar desde archivo ---------------------
 if __name__ == "__main__":
-    archivo = "grafo_peor_caso.txt"  
-    optimo = 10 
+    archivo = "grafo_peor_caso.txt" 
+    optimo = 10  
 
     try:
         edges = leer_grafo_desde_txt(archivo)
